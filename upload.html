@@ -1,13 +1,11 @@
 <!doctype html>
-<html 
-	lang="et"
->
+<html lang="et">
 
 <head>
 
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="mystyle.css">
-	<title>Registreeri</title>
+	<title>Pildi üles laadimine</title>
 	
 </head>
 
@@ -22,31 +20,36 @@
 	</li>
 	
 	<br>
-
-	<form action="index.html" method="post">
-
-        <table border="1">
+	
+	<form action="index.html" method="post" enctype="multipart/form-data">
+	<strong>Pildi üles laadimine</strong>
+	<table>
             
             <tbody>
 
                 <tr>
-                    <td>Nimi</td>
+                    <td>Pildi pealkiri:</td>
                     <td>
-                        <input type="text" name="nimi">
+                        <input type="text" name="pealkiri">
                     </td>
                 </tr>
 
                 <tr>
-                    <td>Salasõna</td>
+                    <td>Pildi autor:</td>
                     <td>
-                        <input type="password" name="password">
+                        <input type="text" name="autor">
                     </td>
-                </tr>
-				
-                <tr>
-                    <td>Salasõna uuesti</td>
+				</tr>
+				<tr>
+					<td>Täissuuruses pilt:</td>
                     <td>
-                        <input type="password" name="password_check">
+                        <input type="file" name="img"/>
+                    </td>
+				</tr>
+				<tr>
+					<td>Sama pilt väiksemana:</td>
+                    <td>
+                        <input type="file" name="thumb"/><br>
                     </td>
                 </tr>
 
@@ -54,14 +57,11 @@
 			
         </table>
 
-        <button type="submit" name="nupp">Registreeri</button>
-
-    </form>
+		<input type="submit" value="Laadi pilt üles"/>
 	
-	<p>
-		Kui Te olete juba registreeritud kasutaja, siis <a href="login.html">logige sisse siit</a>. <br>
-	</p>
-		
+	</form>
+	
+	<br>
 	<p>
 		<a 
 			href="http://validator.w3.org/check?uri=referer">

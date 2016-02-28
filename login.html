@@ -1,7 +1,5 @@
 <!doctype html>
-<html 
-	lang="et"
->
+<html lang="et">
 
 <head>
 
@@ -12,14 +10,18 @@
 </head>
 
 <body>
+
 	<li>
 		<a href="index.html">Pealeht</a> <br>
 		<a href="gallery.html">Galerii</a> <br>
 		<a href="login.html">Logi sisse</a> <br>
 		<a href="register.html">Registreeri</a> <br>
-	</li><br>
-
-	<form method="post" onsubmit="return false;">
+		<a href="upload.html">Lae üles</a> <br>
+	</li>
+	
+	<br>
+	
+	<form action="index.html" method="post">
 
 
         <table border="1">
@@ -29,21 +31,14 @@
                 <tr>
                     <td>Nimi</td>
                     <td>
-                        <input type="text">
+                        <input type="text" name="nimi">
                     </td>
                 </tr>
 
                 <tr>
                     <td>Salasõna</td>
                     <td>
-                        <input type="password">
-                    </td>
-                </tr>
-				
-                <tr>
-                    <td>Salasõna uuesti</td>
-                    <td>
-                        <input type="password">
+                        <input type="password" name="password">
                     </td>
                 </tr>
 
@@ -51,14 +46,17 @@
 			
         </table>
 
-        <button type="submit">Logi sisse</button>
+        <button type="submit" name="nupp">Logi sisse</button>
 
     </form>
 	
-	<form action="register.html">
-		<input type="submit" value="Registreeri">
-	</form>
+	<br>
 	
+	<p>
+		<a href="register.html">Registreeri kasutajaks</a>
+	</p>
+	
+	<br>
 	
 	<p>
 		<a 
