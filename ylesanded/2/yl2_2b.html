@@ -7,17 +7,18 @@
 </head>
 
 <body>
-	<form method="POST" onsubmit="yl2_2b.html">
+	<form method="POST" action="yl2_2b.html">
 	
-		<label>Nimi:<input type="text" name="nimi" placeholder="Kas äkki Mati?"></label><br>
-		<label>Vanus:<input type="number" name="vanus" value="30"></label><br>
-		<label>Telefoninumber:<input type="tel" name="tel"></label><br>
-		<label>E-post:<input type="email" name="email"></label><br>
-		<label><input type="radio" name="sugu">Mees</label><br>
-        <label><input type="radio" name="sugu">Naine</label><br>
-		<label><input type="checkbox" name="suusad" checked>Suusad</label><br>
-        <label><input type="checkbox" name="kepid">Kepid</label><br>
+		<textarea name="tekstiala"></textarea><br>
+		
+		<select name="valik">
+			<option value="1" selected>Esimene valik</option>
+			<option value="2">Teine valik</option>
+			<option value="3">Kolmas valik</option>
+		</select><br>
+
 		<button type="submit" name="nupp">Saada</button>
+		
     </form>
 
 </body>
