@@ -1,8 +1,30 @@
 body {
+    background-color: darkgray;
+}
+
+#indexDiv {
     background-color: lightgray;
 }
 
+#indexMainDiv {
+    background-color: lavender;
+	text-align: justify;
+	border-style: dashed none dashed none;
+	border-radius: 40px;
+}
+
+#indexMainDiv p {
+	border-style: none solid none solid;
+	border-radius: 40px;
+	background-color: white;
+}
+
 h1 {
+    color: red;
+    margin-left: 20px;
+}
+
+#indexH1 {
     color: firebrick;
     margin-left: 20px;
 }
@@ -19,14 +41,59 @@ h3 {
 
 p {
 	margin-left: 20px;
+	font-family: times, serif;
 }
 
 img {
     max-width: 100%;
     height: auto;
     width: auto\9; /* ie8 */
+	cursor: crosshair;
+	border-style: dashed;
+	border-color: lightblue;
+}
+
+img:hover {
+	border-color: darkblue;
+}
+
+#indexMainDiv img {
+	margin-left: 20px;
 }
 
 form {
 	margin-left: 20px;
 }
+
+#menu a {
+	margin-left: 10px;
+	color: green;
+	text-decoration: underline;
+	font-weight: 900;
+	font-size: 95%;
+}
+
+#menu a:hover {
+	color: limegreen;
+	text-decoration: none;
+	font-weight: 1200;
+	font-size: 95%;
+}
+
+li {
+	font-family: "Lucida Console", Monaco, monospace;
+}
+
+ol {
+	margin-left: 2em;
+	list-style-type: upper-roman;
+}
+
+ul {
+	list-style-type: square;
+}
+
+[src="http://www.w3.org/Icons/valid-xhtml10"], [src="http://jigsaw.w3.org/css-validator/images/vcss"] {
+	border-style: none;
+}
+
