@@ -1,47 +1,38 @@
 body {
-    background-color: darkgray;
+    margin: 0;
 }
 
-#indexDiv {
-    background-color: lightgray;
+#main{
+	margin-left:8em;
+	padding:1px 16px;
 }
 
-#indexMainDiv {
-    background-color: lavender;
-	text-align: justify;
-	border-style: dashed none dashed none;
-	border-radius: 40px;
+#menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+	width: 8em;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
 }
 
-#indexMainDiv p {
-	border-style: none solid none solid;
-	border-radius: 40px;
-	background-color: white;
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
 }
 
-h1 {
-    color: red;
-    margin-left: 20px;
+li a.active {
+    background-color: #4CAF50;
+    color: white;
 }
 
-#indexH1 {
-    color: firebrick;
-    margin-left: 20px;
-}
-
-h2 {
-    color: indianred;
-    margin-left: 20px;
-}
-
-h3 {
-    color: darkred;
-    margin-left: 20px;
-}
-
-p {
-	margin-left: 20px;
-	font-family: times, serif;
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
 }
 
 img {
@@ -57,43 +48,6 @@ img:hover {
 	border-color: darkblue;
 }
 
-#indexMainDiv img {
-	margin-left: 20px;
-}
-
-form {
-	margin-left: 20px;
-}
-
-#menu a {
-	margin-left: 10px;
-	color: green;
-	text-decoration: underline;
-	font-weight: 900;
-	font-size: 95%;
-}
-
-#menu a:hover {
-	color: limegreen;
-	text-decoration: none;
-	font-weight: 1200;
-	font-size: 95%;
-}
-
-li {
-	font-family: "Lucida Console", Monaco, monospace;
-}
-
-ol {
-	margin-left: 2em;
-	list-style-type: upper-roman;
-}
-
-ul {
-	list-style-type: square;
-}
-
 [src="http://www.w3.org/Icons/valid-xhtml10"], [src="http://jigsaw.w3.org/css-validator/images/vcss"] {
 	border-style: none;
 }
-
