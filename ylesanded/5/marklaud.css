@@ -1,0 +1,75 @@
+
+body {
+background-color: #0A24A9
+}
+
+#main {
+border: none;
+background: transparent;
+width : 150px;
+height : 150px;
+position : fixed;
+left: 250px;
+top: 250px			
+}
+
+.ring {
+border-radius: 50%;
+border-style: solid;
+position: absolute;
+}
+
+.ring:nth-child(1){
+height: 100%;
+width: 100%;
+background-color:white;
+left: 0% ;
+top: 0%;
+}
+
+.ring:nth-child(2){
+height: 80%;
+width: 80%;
+background-color:red;
+left: 10% ;
+top: 10%;
+}
+
+.ring:nth-child(3){
+height: 60%;
+width: 60%;
+background-color: white;
+left: 20% ;
+top: 20%;	
+}
+
+.ring:nth-child(4){
+height: 40%;
+width: 40%;
+background-color: red;
+left: 30% ;
+top: 30%;	
+}
+
+.ring:nth-child(5){
+height: 20%;
+width: 20%;
+background-color: white;
+left: 40% ;
+top: 40%;	
+}
+
+.ring:nth-child(6){
+height: 5%;
+width: 5%;
+background-color: red;
+left: 47.5% ;
+top: 47.5%;	
+}
+
+#duck{
+position: fixed;
+width: 100%;
+left: 0px;
+bottom: 0px;
+}
