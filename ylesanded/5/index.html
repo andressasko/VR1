@@ -3,15 +3,26 @@
 <head>
 	<meta charset="utf-8">
 	<link type="text/css" rel="stylesheet" href="marklaud.css" />
+	<script src="http://code.jquery.com/jquery-1.12.2.min.js"></script>
 	<script>
-		window.onload = function() {
-			var target = document.getElementById('main');
-			target.onclick = function(){
-				this.style.top = Math.floor(Math.random() * innerHeight) + "px";
-				this.style.left = Math.floor(Math.random() * innerWidth) + "px";
-			}
-		}	
+		$(document).ready(function () {
+			$('#main').click(function () {
+				$(this).animate({
+					"top": (Math.random()*innerHeight+"px"),
+					"left": (Math.random()*innerWidth+"px")
+				})
+			})
+		})
 	</script>
+	<!--<script>-->
+		<!--window.onload = function() {-->
+			<!--var target = document.getElementById('main');-->
+			<!--target.onclick = function(){-->
+				<!--this.style.top = Math.floor(Math.random() * innerHeight) + "px";-->
+				<!--this.style.left = Math.floor(Math.random() * innerWidth) + "px";-->
+			<!--}-->
+		<!--}	-->
+	<!--</script>-->
 	<title>Märklaud</title>
 </head>
 <body>
