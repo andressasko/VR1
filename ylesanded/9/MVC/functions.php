@@ -21,9 +21,6 @@ function kontrolli_vormi(){
             exit(0);
         }
     }
-    if (!empty(($errors))): foreach ($errors as $e): ?>
-        <p style="color: crimson"><?php echo $e ?></p>
-    <?php endforeach; endif;
 }
 
 ?>

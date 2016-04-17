@@ -16,16 +16,14 @@ window.addEventListener("DOMContentLoaded", function(){
 		var images = document.querySelectorAll('img');
 		// alert(images.length);
 		for (var i=0; i<(images.length-2); i++){
-			images[0].onclick = showDefails(images[0]);
+			images[0].onclick = showDetails(images[0]);
 
 		}
 
 		function showDetails(el){
 			var hoidja =  document.getElementById('hoidja');
 		}
-
-
-
+		
 		function suurus(el){
 			el.removeAttribute("height"); // eemaldab suuruse
 			el.removeAttribute("width");
@@ -105,4 +103,4 @@ window.addEventListener("DOMContentLoaded", function(){
 	// alert(this,innerHTML);
 	// }; //seda osa ei saanud tööle
 
-})
+});

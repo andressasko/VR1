@@ -1,3 +1,4 @@
+<?php require_once ('functions.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,11 +62,11 @@
                     echo htmlspecialchars($_POST["komm"]);
                 ?></textarea><br/>
             <input type="submit" value="registreeru"/>
-<!--            --><?php
-//            if (!empty(( $GLOBALS ['errors']))): foreach ( $GLOBALS ['errors'] as $e): ?>
-<!--                <p style="color: crimson">--><?php //echo $e ?><!--</p>-->
-<!--            --><?php //endforeach; endif;
-//            ?>
+            <?php
+            if (!empty($errors)): foreach ($errors as $e): ?>
+                <p style="color: crimson"><?php echo $e ?></p>
+            <?php endforeach; endif; 
+            ?>
         </form>
     </div>
 </div>

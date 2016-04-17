@@ -1,8 +1,26 @@
 body {
 	margin: 0;
+	background-color: #eeffee;
+	color: darkgreen;
+}
+
+h1 {
+	color: limegreen;
+	margin-left:4em; /* Miks 4 ja mitte 8? */
+	padding:1px 16px;
+}
+
+h3 {
+	color: green;
 }
 
 #main{
+	font-family: Georgia, serif;
+	margin-left:8em;
+	padding:1px 16px;
+}
+
+#footer{
 	margin-left:8em;
 	padding:1px 16px;
 }
@@ -41,7 +59,7 @@ img {
 	width: auto\9; /* ie8 */
 	cursor: crosshair;
 	border-style: dashed;
-	border-color: lightblue;
+	border-color: lightgreen;
 }
 
 img:hover {

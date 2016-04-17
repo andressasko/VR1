@@ -14,9 +14,6 @@ switch ($mode){
         kontrolli_vormi();
         include ("pealeht.php");
         break;
-    case "veateade":
-        anna_viga();
-        break;
     default:
         include ("pealeht.php");
         break;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <?php
-    //ebaturvaline
+    //turvaline
     if (!empty($_POST)){
         if (!empty($_POST["q"])) {
         echo htmlspecialchars($_POST['q']);
@@ -13,7 +13,7 @@
     ?>
     <hr/>
     <?php
-    //turvaline
+    //ebaturvaline
     if (!empty($_POST)){
         if (!empty($_POST["q"])) {
             echo $_POST['q'];
