@@ -40,7 +40,7 @@
 	<br>
 
 	<p>
-		<a href="register.php">Registreeri kasutajaks</a>
+		<a href="?mode=register">Registreeri kasutajaks</a>
 	</p>
 
 </div>
