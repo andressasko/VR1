@@ -6,7 +6,8 @@ body {
 
 h1 {
 	 color: limegreen;
-	 /*margin-left:4em; !* Miks 4 ja mitte 8? *!*/
+	margin-top: 0;
+	 margin-left:4em; /* Miks 4 ja mitte 8? */
 	 padding:1px 16px;
  }
 

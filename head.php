@@ -1,14 +1,12 @@
 <?php require_once ('functions.php'); ?>
 <!doctype html>
 <html lang="et">
-
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" media="screen" href="myStyle.css">
     <title>Praktikumid</title>
 </head>
 <body>
-<h1>Kassipildid</h1>
 <div id="menu">
     <?php if (array_key_exists('user', $_SESSION)): ?>
         <ul>
@@ -26,7 +24,7 @@
         </ul>
     <?php endif; ?>
 </div>
-
+<h1>Kassipildid</h1>
 <?php
     if (isset($_SESSION['teade'])): ?>
         <div class="teade"><?php echo $_SESSION['teade'];?></div>
