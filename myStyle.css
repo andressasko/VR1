@@ -5,13 +5,20 @@ body {
 }
 
 h1 {
-	color: limegreen;
-	margin-left:4em; /* Miks 4 ja mitte 8? */
-	padding:1px 16px;
-}
+	 color: limegreen;
+	 /*margin-left:4em; !* Miks 4 ja mitte 8? *!*/
+	 padding:1px 16px;
+ }
 
 h3 {
 	color: green;
+}
+
+.teade {
+	font-family: Georgia, serif;
+	margin-left:8em;
+	padding:1px 16px;
+	color:crimson;
 }
 
 #main{

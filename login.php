@@ -1,9 +1,8 @@
 <?php require_once ('functions.php'); ?>
 <div id="main">
-	</br>
+	
 	<form action="?mode=login" method="post">
-
-
+		
 		<table border="1">
 
 			<tbody>
@@ -32,9 +31,8 @@
 		<button type="submit" name="nupp">Logi sisse</button>
 		<?php
 		if (!empty($errors)): foreach ($errors as $e): ?>
-		<p style="color: crimson"><?php echo $e ?></p>
-		<?php endforeach; endif;
-		?>
+		<p style="color: crimson"><?php echo $e; ?></p>
+		<?php endforeach; endif; ?>
 	</form>
 
 	<br>
