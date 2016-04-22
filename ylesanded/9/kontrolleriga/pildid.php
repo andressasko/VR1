@@ -13,6 +13,6 @@ if ($dh = opendir($dir)) { // kui funktsioon opendir vastava sisendiga õnnestub
 }
 $pildid= array();
 for ($i=0; $i < sizeof($files); $i++){
-    $pildid[$i] = array('src'=>'pildid/'.$files[$i], 'alt'=> $files[$i]);
+    $pildid[$i] = array('src'=>('pildid/'.$files[$i]), 'alt'=> $files[$i]);
 }
 ?>

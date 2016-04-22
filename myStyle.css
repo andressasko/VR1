@@ -61,9 +61,9 @@ li a:hover:not(.active) {
 }
 
 img {
-	max-width: 100%;
+	max-width: 70%;
 	height: auto;
-	width: auto\9; /* ie8 */
+	width: auto;
 	cursor: crosshair;
 	border-style: dashed;
 	border-color: lightgreen;
@@ -75,6 +75,8 @@ img:hover {
 
 [src="http://www.w3.org/Icons/valid-xhtml10"], [src="http://jigsaw.w3.org/css-validator/images/vcss"] {
 	border-style: none;
+	min-width: 88px;
+	max-width: 88px;
 }
 
 #taust{ /* taust, mis peidab lehe sisu */

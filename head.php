@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" media="screen" href="myStyle.css">
     <title>Praktikumid</title>
-
-    <h1>Kassipildid</h1>
+</head>
 <body>
+<h1>Kassipildid</h1>
 <div id="menu">
     <?php if (array_key_exists('user', $_SESSION)): ?>
         <ul>
