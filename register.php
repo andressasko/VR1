@@ -36,7 +36,7 @@
 	</form>
 
 	<p>
-		Kui Te olete juba registreeritud kasutaja, siis <a href="login.php">logige sisse siit</a>. <br>
+		Kui Te olete juba registreeritud kasutaja, siis <a href="?mode=login">logige sisse siit</a>. <br>
 	</p>
 	
 </div>
