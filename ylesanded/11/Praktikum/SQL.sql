@@ -1,3 +1,6 @@
+-- noinspection SqlDialectInspectionForFile
+-- noinspection SqlNoDataSourceInspectionForFile
+
 CREATE TABLE rsaarmae_pictures (
 	id integer PRIMARY KEY auto_increment,
 	thumb varchar(50) NOT NULL,

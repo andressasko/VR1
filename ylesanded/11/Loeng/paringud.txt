@@ -58,9 +58,10 @@ SELECT name as cat, firstname as owner FROM cats, owners where owners.id=cats.ow
 
 SELECT name as cat, firstname as owner FROM cats as c, owners as o where o.id=c.owner_id;
 
+SELECT c.id, c.name, c.age, CONCAT(o.firstname, ' ', o.lastname) AS ownername FROM cats c, owners o WHERE o.id=c.owner_id ORDER BY o.id, c.name LIMIT 0, 10;
 
 INSERT INTO users (username, password) VALUES (NULL, 'Tom', sha1('parool'));
 
-SELECT c.id, c.name, c.age, CONCAT(o.firstname, ' ', o.lastname) AS ownername FROM cats c, owners o WHERE o.id=c.owner_id ORDER BY o.id, c.name LIMIT 0, 10;
+
 
 

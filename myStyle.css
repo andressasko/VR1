@@ -123,3 +123,12 @@ img:hover {
 #hoidja {  /* ümbritseb kogu suure pildi elementide hulka 0px kõrgusena, et teised elemendid taga oleks kasutatavad*/
 	height: 0px;
 }
+
+a.button {
+	-webkit-appearance: button;
+	-moz-appearance: button;
+	appearance: button;
+
+	text-decoration: none;
+	color: initial;
+}

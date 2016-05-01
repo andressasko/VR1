@@ -9,7 +9,7 @@
 			</p>
 
 		</div>
-
+		
 		<div>
 			<br>
 			<h3>Näide kassipildist:</h3>

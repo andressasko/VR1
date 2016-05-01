@@ -1,14 +1,15 @@
 <div id="bodyDiv">
-
 	<div id="main">
-		<div id="gallery">
-			<?php
-			foreach ($pics as &$value) {
-
-				echo "<a href=img/$value[src]><img src=thumb/$value[src] alt=$value[alt] title='$value[title]' /></a> \n";
-			}
-			?>
+		<div>
+			<p>
+				<a href="?mode=updateDB" class="button">Reset DB</a>
+			</p>
 		</div>
-		
+		<div id="gallery">
+			<?php all_ID(); ?>
+<!--			--><?php //displayDBpics(); ?>
+<!--			--><?php //displayPictures(); ?>
+		</div>
 	</div>
+</div>
 	

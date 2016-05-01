@@ -1,6 +1,7 @@
 <?php
 $dir = "thumb"; // kausta nimi, mida avada
-$files = array(); // massiiv, kuhu lisatakse leitud failid
+global $files;
+$files = array();// massiiv, kuhu lisatakse leitud failid
 $width = array(); //massiiv, kuhu lisatakse leitud failide laius
 $height = array(); //massiiv, kuhu lisatakse leitud failide kõrgus
 if ($dh = opendir($dir)) { // kui funktsioon opendir vastava sisendiga õnnestub, siis jäta viide kaustale meelde muutujasse $dh ning läbi järgnev koodiblokk

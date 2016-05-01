@@ -1,6 +1,8 @@
 <?php
-require_once ('functions.php');
+require_once 'functions.php';
 startSession();
+connect_db();
+setupPictures();
 
 if (!empty($_GET)) {
     if ($_GET["mode"] != "") {
@@ -28,6 +30,9 @@ switch ($mode) {
         break;
     case 'logout':
         logOut();
+        break;
+    case 'updateDB':
+        updateDB();
         break;
     default:
         viewFront();
