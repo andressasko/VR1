@@ -45,7 +45,7 @@ function viewLogin(){
                 $userMatch = true;
             }
         }
-        
+
         if (empty($_POST["name"])){
 
         }
@@ -53,22 +53,23 @@ function viewLogin(){
             $errors[]="Sellist kasutajat ei ole registreeritud.";
         }
         $passMatch = false;
+        $p = '';
         if (empty($_POST["password"])){
             $errors[]="Salasõna puudub.";
         } else {
             $p = mysqli_real_escape_string($_SESSION['connection'],$_POST["password"]);
-            $sql = "SELECT pass FROM rsaarmae_users";
+            $sql = "SELECT pass FROM rsaarmae_users WHERE username='$u'";
             $result = mysqli_query($_SESSION['connection'], $sql);
             while ($row = mysqli_fetch_assoc($result)){
                 if ($row['pass'] == sha1($p)){
                     $passMatch = true;
                 }
             }
+            if ($userMatch && !$passMatch){
+                $errors[]="Vale parool.";
+            }
         }
 
-        if ($userMatch && !$passMatch){
-            $errors[]="Vale parool.";
-        }
         //kontroll läbi
         if (empty($errors)){
             //kõik ok
