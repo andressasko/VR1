@@ -5,8 +5,12 @@ function viewFront(){
 }
 
 function viewGallery(){
-//    require_once('pics.php');
-    require_once('gallery.php');
+    if (array_key_exists('user', $_SESSION)){
+        require_once('gallery.php');
+    } else {
+        $_SESSION["teade"] = "Galeriid näevad ainult sisse logitud kasutajad.";
+        header("Location: controller.php?mode=index");
+    }
 }
 
 function all_ID(){
@@ -18,28 +22,58 @@ function all_ID(){
         echo '<pre>';
     print_r($IDs);
     echo '</pre>';
-    
 }
 
 function viewLogin(){
+
     $errors = array();
+
     if (!empty($_POST)){
         //vorm esitati
+
         if (empty($_POST["name"])){
             $errors[]="Nimi puudub.";
-        } elseif ($_POST["name"] != "kasutaja") {
+        }
+        //nimi olemas
+
+        $u = mysqli_real_escape_string($_SESSION['connection'],$_POST["name"]);
+        $userMatch = false;
+        $sql = "SELECT username FROM rsaarmae_users";
+        $result = mysqli_query($_SESSION['connection'], $sql);
+        while ($row = mysqli_fetch_assoc($result)){
+            if ($row['username'] == $u){
+                $userMatch = true;
+            }
+        }
+        
+        if (empty($_POST["name"])){
+
+        }
+        elseif (!$userMatch) {
             $errors[]="Sellist kasutajat ei ole registreeritud.";
         }
+        $passMatch = false;
         if (empty($_POST["password"])){
             $errors[]="Salasõna puudub.";
-        } elseif ($_POST["name"] == "kasutaja" && $_POST["password"] != "parool"){
+        } else {
+            $p = mysqli_real_escape_string($_SESSION['connection'],$_POST["password"]);
+            $sql = "SELECT pass FROM rsaarmae_users";
+            $result = mysqli_query($_SESSION['connection'], $sql);
+            while ($row = mysqli_fetch_assoc($result)){
+                if ($row['pass'] == sha1($p)){
+                    $passMatch = true;
+                }
+            }
+        }
+
+        if ($userMatch && !$passMatch){
             $errors[]="Vale parool.";
         }
         //kontroll läbi
         if (empty($errors)){
             //kõik ok
             //siin peaks infoga midagi tegema (andmebaas või sessioon)
-            if ($_POST["name"] == "kasutaja" && $_POST["password"] == "parool") {
+            if ($userMatch && $passMatch) {
                 startSession();
                 $_SESSION["user"] = "Sisse logitud alates ".date(time()).".";
                 $_SESSION["teade"] = "Oled sisse logitud kasutajana '".$_POST['name']."'.";
@@ -52,17 +86,60 @@ function viewLogin(){
 }
 
 function viewRegister(){
-    require_once('register.php');
-}
+    
+    $errors = array();
+    
+    if (!empty($_POST)) {
+        //vorm esitati
 
-function viewUpload(){
+        if (empty($_POST["name"])) {
+            $errors[] = "Nimi puudub.";
+        }
+        //nimi olemas
 
-    if (array_key_exists('user', $_SESSION)){
-        require_once('upload.php');
-    } else {
-        $_SESSION["teade"] = "Failide üleslaadimine on lubatud ainult sisselogitud kasutajatel.";
-        header("Location: controller.php?mode=index");
+        $u = mysqli_real_escape_string($_SESSION['connection'], $_POST["name"]);
+        $p1 = '';
+        $p2 = '';
+
+        $userMatch = false;
+        $sql = "SELECT username FROM rsaarmae_users";
+        $result = mysqli_query($_SESSION['connection'], $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+
+            if ($row['username'] == $u) {
+                $userMatch = true;
+                $errors[] = "Sellise nimega kasutaja on juba registreeritud, proovige teist nime";
+            }
+        }
+
+        if (empty($_POST["name"])) {
+
+        }
+        if (empty($_POST["password"])) {
+            $errors[] = "Salasõna puudub.";
+        } else {
+            $p1 = mysqli_real_escape_string($_SESSION['connection'], $_POST["password"]);
+        }
+        if (empty($_POST["password_check"])) {
+            $errors[] = "Salasõna kontroll puudub.";
+        } else {
+            $p2 = mysqli_real_escape_string($_SESSION['connection'], $_POST["password_check"]);
+        }
+        if ($p1 != $p2) {
+            $errors[] = "Salasõnad ei ühti.";
+        }
+
+        if (!$userMatch && empty($errors)) {
+            $query = "INSERT INTO rsaarmae_users (username, pass) VALUES (''$u'', SHA1('\''$p\''));";
+            mysqli_query($_SESSION['connection'],$query);
+            startSession();
+            $_SESSION["user"] = "Sisse logitud alates ".date(time()).".";
+            $_SESSION["teade"] = "Registreeritud ja sisse logitud kasutaja nimega '" . $_POST['name'] . "'.";
+            header("Location: controller.php?mode=gallery");
+            exit(0);
+        }
     }
+    require_once('register.php');
 }
 
 function logOut(){
@@ -84,7 +161,6 @@ function endSession(){
     session_destroy();
 }
 
-
 function connect_db(){
     global $connection;
     $host="localhost";
@@ -94,12 +170,6 @@ function connect_db(){
     $connection = mysqli_connect($host, $user, $pass, $db) or die("ei saa mootoriga ühendust");
     mysqli_query($connection, "SET CHARACTER SET UTF8") or die("Ei saanud baasi utf-8-sse - ".mysqli_error($connection));
     $_SESSION['connection'] = $connection;
-//    echo '<pre>';
-//    print_r($_SESSION['connection']);
-//    echo '<br/>';
-//    print_r($connection);
-//    echo '</pre>';
-
 }
 
 function displayDBpics(){
@@ -121,26 +191,6 @@ function updateDB(){
         mysqli_query($_SESSION['connection'], "INSERT INTO rsaarmae_pictures (filename) VALUES ('$files[$i]')");
     }
     header("Location: controller.php?mode=gallery");
-//    $dbFilename = array();
-//    $result = mysqli_query($connection, "SELECT filename FROM rsaarmae_pictures");
-//    while ($row = mysqli_fetch_array($result)) {
-//        $dbFilename[] = $row['filename'];
-////        echo $row['filename'];
-//    }
-//    print_r($files);
-//    print_r($dbFilename);
-//    for ($i=0; $i <= sizeof($files); $i++){
-////        echo $files[$i];
-//        $exists = 0;
-//        for ($j=0; $j <= sizeof($dbFilename); $j++){
-//            if ($files[$i] == $dbFilename[$j]){
-//                $exists++;
-//            }
-//        }
-//        if ($exists == 0){
-//            mysqli_query($connection, "INSERT INTO rsaarmae_pictures (filename) VALUES ('test2.jpg')");
-//        }
-//    }
 }
 
 function setupPictures()
@@ -166,7 +216,7 @@ function setupPictures()
 
     $pics = array();
     for ($i = 0; $i < sizeof($files); $i++) {
-        $pics[$i] = array('src' => $files[$i], 'alt' => ($i + 1) . '. pilt', 'title' => ($width[$i] . ' * ' . $height[$i]));
+        $pics[$i] = array('src' => $files[$i], 'alt' => ($i + 1) . '_pilt', 'title' => ($width[$i] . ' * ' . $height[$i]));
     }
     $_SESSION['files'] = $files;
     $_SESSION['pics'] = $pics;

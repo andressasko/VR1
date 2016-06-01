@@ -25,9 +25,6 @@ switch ($mode) {
     case 'register':
         viewRegister();
         break;
-    case 'upload':
-        viewUpload();
-        break;
     case 'logout':
         logOut();
         break;

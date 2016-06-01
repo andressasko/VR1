@@ -1,15 +1,19 @@
+<?php require_once ('functions.php'); ?>
 <div id="main">
-	</br>
-	<form action="front.php" method="post">
+	<br/>
+	<form action="?mode=register" method="post">
 
-		<table border="1">
+		<table>
 
 			<tbody>
 
 			<tr>
 				<td>Nimi</td>
 				<td>
-					<input type="text" name="nimi">
+					<input type="text" name="name" <?php
+					if(!empty($_POST["name"]))
+						echo "value=\"".htmlspecialchars($_POST["name"])."\" ";
+					?> />
 				</td>
 			</tr>
 
@@ -32,7 +36,10 @@
 		</table>
 
 		<button type="submit" name="nupp">Registreeri</button>
-
+		<?php
+		if (!empty($errors)): foreach ($errors as $e): ?>
+			<p style="color: crimson"><?php echo $e; ?></p>
+		<?php endforeach; endif; ?>
 	</form>
 
 	<p>

@@ -62,16 +62,13 @@ li a:hover:not(.active) {
 }
 
 img {
-	max-width: 70%;
-	height: auto;
-	width: auto;
 	cursor: crosshair;
 	border-style: dashed;
 	border-color: lightgreen;
 }
 
 img:hover {
-	border-color: darkblue;
+	border-color: MediumSeaGreen;
 }
 
 [src="http://www.w3.org/Icons/valid-xhtml10"], [src="http://jigsaw.w3.org/css-validator/images/vcss"] {
@@ -95,7 +92,7 @@ img:hover {
 	bottom: 0px;
 	left: 0px;
 	right: 0px;
-	margin:0 auto;
+	margin: auto;
 	z-index: 10;
 	display:table;
 	width:100%;
@@ -106,29 +103,14 @@ img:hover {
 	display:table-cell;
 	vertical-align:middle;
 }
+
 #sisu { /* teeb pildi ümbruse kitsamaks ja annab tausta */
 	display: table;
 	margin: auto;
 	background: rgba(0,0,0,0.7);
 	padding: 10px;
 }
-#sulge { /* sulgemise element */
-	position: fixed;
-	top: 0;
-	right: 0;
-	z-index: 15;
-	padding:4px;
-	font-weight: bold;
-}
+
 #hoidja {  /* ümbritseb kogu suure pildi elementide hulka 0px kõrgusena, et teised elemendid taga oleks kasutatavad*/
 	height: 0px;
-}
-
-a.button {
-	-webkit-appearance: button;
-	-moz-appearance: button;
-	appearance: button;
-
-	text-decoration: none;
-	color: initial;
 }
