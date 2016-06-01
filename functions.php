@@ -130,7 +130,7 @@ function viewRegister(){
         }
 
         if (!$userMatch && empty($errors)) {
-            $query = "INSERT INTO rsaarmae_users (username, pass) VALUES (''$u'', SHA1('\''$p\''));";
+            $query = "INSERT INTO rsaarmae_users (username, pass) VALUES ('$u', SHA1('$p1'));";
             mysqli_query($_SESSION['connection'],$query);
             startSession();
             $_SESSION["user"] = "Sisse logitud alates ".date(time()).".";
